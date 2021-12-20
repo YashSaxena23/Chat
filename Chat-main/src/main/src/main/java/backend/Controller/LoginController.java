@@ -23,7 +23,8 @@ public class LoginController {
             Logging.getUrl();
             User user1 = userRepository.getUserByEmail(email);
             if(user1 != null){
-                throw new UserAlreadyRegisteredException("User already registered");
+                UserAlreadyRegisteredException e = new UserAlreadyRegisteredException();
+                throw new UserAlreadyRegisteredException("User Already Exists",e);//chained exception
             }else{
                 user1 = new User(user.getId(), user.getUserName(), user.getMobile(), user.getEmail(), user.getProfilePic(),
                         user.getIsActive(), user.getUserGender(), user.getFirstName(), user.getMiddleName(), user.getLastName(),

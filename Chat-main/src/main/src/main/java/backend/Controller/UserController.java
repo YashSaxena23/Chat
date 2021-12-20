@@ -34,10 +34,11 @@ public class UserController {
      * @return
      */
     @PostMapping("/update")
-    public ResponseEntity<String> updateUserProfile(@RequestBody User user, @RequestParam(required = false) Long id,
+    public ResponseEntity<String> updateUserProfile(@RequestParam(required = false) Long id,
                                                     @RequestParam(required = false) String mobile,
                                                     @RequestParam(required = false) String email){
         Logging.getUrl();
+        User user = new User();
         String user1 = userService.updateUser(user,id,mobile,email);
         return new ResponseEntity<>(user1, HttpStatus.OK);
     }

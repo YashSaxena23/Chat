@@ -1,10 +1,12 @@
 package backend.Entities;
 
+import backend.CustomValidators.ValidEmail;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -19,10 +21,13 @@ public class User {
     private Long id;
 
     private String userName;//(name of choice)
+
     @Column(unique = true)
     private String mobile;
+
     @Column(unique = true)
     private String email;
+
     private String profilePic;
     private Boolean isActive;
     private String userGender;

@@ -15,4 +15,12 @@ public class Exceptions {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(value = {UserAlreadyRegisteredException.class})
+    public ResponseEntity<String> userAlreadyExistsImpl(UserAlreadyRegisteredException ex){
+        Logging.logPapertrail.error(ex.getMessage());
+        return new
+                ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
+    }
+
+
 }
